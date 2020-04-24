@@ -1,0 +1,5 @@
+{
+  "imports": {
+    "vue/dist/vue.esm.browser.js": "./vue/dist/vue.esm.browser.js"
+  }
+}

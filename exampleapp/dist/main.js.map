@@ -1,0 +1,1 @@
+{"version":3,"file":"main.js","sources":["../src/main.js"],"sourcesContent":["import Vue from '/web_modules/vue/dist/vue.esm.browser.js';\nimport App from '/App.js';\n\nnew Vue({\n  render: (h) => h(App),\n}).$mount('#app');\n"],"names":[],"mappings":";;;AAGA,IAAI,GAAG,CAAC;AACR,EAAE,MAAM,EAAE,CAAC,CAAC,KAAK,CAAC,CAAC,GAAG,CAAC;AACvB,CAAC,CAAC,CAAC,MAAM,CAAC,MAAM,CAAC"}

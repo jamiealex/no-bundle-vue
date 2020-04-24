@@ -1,0 +1,36 @@
+{
+  "name": "vuelvet",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/Spittal/vuelvet.git",
+  "author": "Jamie Spittal <lastmanout@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "build": "ts-node ./src/index.ts",
+    "serve": "servor ./exampleapp/dist --watch"
+  },
+  "dependencies": {
+    "glob": "^7.1.6",
+    "rimraf": "^3.0.2",
+    "rollup": "^2.7.2",
+    "rollup-plugin-vue": "^5.0.0",
+    "snowpack": "^1.7.1"
+  },
+  "devDependencies": {
+    "@types/glob": "^7.1.1",
+    "@types/jest": "^25.2.1",
+    "@types/rimraf": "^3.0.0",
+    "@typescript-eslint/eslint-plugin": "^2.23.0",
+    "@typescript-eslint/parser": "^2.23.0",
+    "@vue/cli-plugin-eslint": "^4.0.0",
+    "eslint": "^6.8.0",
+    "jest": "^25.1.0",
+    "jest-config": "^25.2.7",
+    "servor": "^3.2.0",
+    "ts-jest": "^25.2.1",
+    "ts-node": "^8.9.0",
+    "typescript": "^3.8.3",
+    "vue": "^2.6.0",
+    "vue-template-compiler": "^2.6.0"
+  }
+}
