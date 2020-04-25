@@ -1,5 +1,6 @@
 {
   "imports": {
+    "lodash-es": "./lodash-es.js",
     "vue/dist/vue.esm.browser.js": "./vue/dist/vue.esm.browser.js"
   }
 }

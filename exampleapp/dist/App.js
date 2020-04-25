@@ -1,9 +1,14 @@
-//
-//
-//
-//
+import HelloWorld from './components/HelloWorld.js';
 
-var script = {};
+//
+var script = {
+  components: {
+    HelloWorld,
+  },
+  data() {
+    return { name: 'Jane Doe' }
+  }
+};
 
 function normalizeComponent(template, style, script, scopeId, isFunctionalTemplate, moduleIdentifier /* server only */, shadowMode, createInjector, createInjectorSSR, createInjectorShadow) {
     if (typeof shadowMode !== 'boolean') {
@@ -141,7 +146,15 @@ var __vue_render__ = function() {
   var _vm = this;
   var _h = _vm.$createElement;
   var _c = _vm._self._c || _h;
-  return _c("h5", [_vm._v("HELLLLLLLO WOOORRRLLLDDD")])
+  return _c(
+    "div",
+    [
+      _c("h1", [_vm._v("Hello " + _vm._s(_vm.name))]),
+      _vm._v(" "),
+      _c("HelloWorld")
+    ],
+    1
+  )
 };
 var __vue_staticRenderFns__ = [];
 __vue_render__._withStripped = true;
@@ -149,11 +162,11 @@ __vue_render__._withStripped = true;
   /* style */
   const __vue_inject_styles__ = function (inject) {
     if (!inject) return
-    inject("data-v-2b289874_0", { source: "\nh5[data-v-2b289874] {\n  color: red;\n}\n", map: {"version":3,"sources":["/Users/jamie/web/vuelvet/exampleapp/src/components/HelloWorld.vue"],"names":[],"mappings":";AASA;EACA,UAAA;AACA","file":"HelloWorld.vue","sourcesContent":["<template>\n  <h5>HELLLLLLLO WOOORRRLLLDDD</h5>\n</template>\n\n<script>\nexport default {};\n</script>\n\n<style scoped>\nh5 {\n  color: red;\n}\n</style>\n"]}, media: undefined });
+    inject("data-v-e5575c60_0", { source: "\nh1[data-v-e5575c60] {\n  color: red;\n}\n", map: {"version":3,"sources":["/Users/jamie/web/vuelvet/exampleapp/src/App.vue"],"names":[],"mappings":";AAqBA;EACA,UAAA;AACA","file":"App.vue","sourcesContent":["\n<template>\n  <div>\n    <h1>Hello {{ name }}</h1>\n    <HelloWorld />\n  </div>\n</template>\n\n<script>\nimport HelloWorld from './components/HelloWorld.vue';\nexport default {\n  components: {\n    HelloWorld,\n  },\n  data() {\n    return { name: 'Jane Doe' }\n  }\n}\n</script>\n\n<style scoped>\nh1 {\n  color: red;\n}\n</style>\n"]}, media: undefined });
 
   };
   /* scoped */
-  const __vue_scope_id__ = "data-v-2b289874";
+  const __vue_scope_id__ = "data-v-e5575c60";
   /* module identifier */
   const __vue_module_identifier__ = undefined;
   /* functional template */
@@ -177,67 +190,4 @@ __vue_render__._withStripped = true;
     undefined
   );
 
-//
-var script$1 = {
-  components: {
-    HelloWorld: __vue_component__,
-  },
-  data() {
-    return { name: 'Jane Doe' }
-  }
-};
-
-/* script */
-const __vue_script__$1 = script$1;
-
-/* template */
-var __vue_render__$1 = function() {
-  var _vm = this;
-  var _h = _vm.$createElement;
-  var _c = _vm._self._c || _h;
-  return _c(
-    "div",
-    [
-      _c("h1", [_vm._v("Hello " + _vm._s(_vm.name))]),
-      _vm._v(" "),
-      _c("HelloWorld")
-    ],
-    1
-  )
-};
-var __vue_staticRenderFns__$1 = [];
-__vue_render__$1._withStripped = true;
-
-  /* style */
-  const __vue_inject_styles__$1 = function (inject) {
-    if (!inject) return
-    inject("data-v-e5575c60_0", { source: "\nh1[data-v-e5575c60] {\n  color: red;\n}\n", map: {"version":3,"sources":["/Users/jamie/web/vuelvet/exampleapp/src/App.vue"],"names":[],"mappings":";AAqBA;EACA,UAAA;AACA","file":"App.vue","sourcesContent":["\n<template>\n  <div>\n    <h1>Hello {{ name }}</h1>\n    <HelloWorld />\n  </div>\n</template>\n\n<script>\nimport HelloWorld from './components/HelloWorld.vue';\nexport default {\n  components: {\n    HelloWorld,\n  },\n  data() {\n    return { name: 'Jane Doe' }\n  }\n}\n</script>\n\n<style scoped>\nh1 {\n  color: red;\n}\n</style>\n"]}, media: undefined });
-
-  };
-  /* scoped */
-  const __vue_scope_id__$1 = "data-v-e5575c60";
-  /* module identifier */
-  const __vue_module_identifier__$1 = undefined;
-  /* functional template */
-  const __vue_is_functional_template__$1 = false;
-  /* style inject SSR */
-  
-  /* style inject shadow dom */
-  
-
-  
-  const __vue_component__$1 = normalizeComponent(
-    { render: __vue_render__$1, staticRenderFns: __vue_staticRenderFns__$1 },
-    __vue_inject_styles__$1,
-    __vue_script__$1,
-    __vue_scope_id__$1,
-    __vue_is_functional_template__$1,
-    __vue_module_identifier__$1,
-    false,
-    createInjector,
-    undefined,
-    undefined
-  );
-
-export default __vue_component__$1;
-//# sourceMappingURL=App.js.map
+export default __vue_component__;

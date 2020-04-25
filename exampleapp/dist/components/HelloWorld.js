@@ -1,9 +1,11 @@
-//
-//
-//
-//
+import _ from '../../../../../../../web_modules/lodash-es';
 
-var script = {};
+//
+var script = {
+    created() {
+        console.log(_);
+    }
+};
 
 function normalizeComponent(template, style, script, scopeId, isFunctionalTemplate, moduleIdentifier /* server only */, shadowMode, createInjector, createInjectorSSR, createInjectorShadow) {
     if (typeof shadowMode !== 'boolean') {
@@ -34,8 +36,8 @@ function normalizeComponent(template, style, script, scopeId, isFunctionalTempla
             // 2.3 injection
             context =
                 context || // cached call
-                    (this.$vnode && this.$vnode.ssrContext) || // stateful
-                    (this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext); // functional
+                (this.$vnode && this.$vnode.ssrContext) || // stateful
+                (this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext); // functional
             // 2.2 with runInNewContext: true
             if (!context && typeof __VUE_SSR_CONTEXT__ !== 'undefined') {
                 context = __VUE_SSR_CONTEXT__;
@@ -100,8 +102,8 @@ function addStyle(id, css) {
             // http://stackoverflow.com/a/26603875
             code +=
                 '\n/*# sourceMappingURL=data:application/json;base64,' +
-                    btoa(unescape(encodeURIComponent(JSON.stringify(css.map)))) +
-                    ' */';
+                btoa(unescape(encodeURIComponent(JSON.stringify(css.map)))) +
+                ' */';
         }
         if (!style.element) {
             style.element = document.createElement('style');
@@ -137,34 +139,34 @@ function addStyle(id, css) {
 const __vue_script__ = script;
 
 /* template */
-var __vue_render__ = function() {
-  var _vm = this;
-  var _h = _vm.$createElement;
-  var _c = _vm._self._c || _h;
-  return _c("h5", [_vm._v("HELLLLLLLO WOOORRRLLLDDD")])
+var __vue_render__ = function () {
+    var _vm = this;
+    var _h = _vm.$createElement;
+    var _c = _vm._self._c || _h;
+    return _c("h5", [_vm._v("HELLLLLLLO WOOORRRLLLDDD")])
 };
 var __vue_staticRenderFns__ = [];
 __vue_render__._withStripped = true;
 
-  /* style */
-  const __vue_inject_styles__ = function (inject) {
+/* style */
+const __vue_inject_styles__ = function (inject) {
     if (!inject) return
-    inject("data-v-2b289874_0", { source: "\nh5[data-v-2b289874] {\n  color: red;\n}\n", map: {"version":3,"sources":["/Users/jamie/web/vuelvet/exampleapp/src/components/HelloWorld.vue"],"names":[],"mappings":";AASA;EACA,UAAA;AACA","file":"HelloWorld.vue","sourcesContent":["<template>\n  <h5>HELLLLLLLO WOOORRRLLLDDD</h5>\n</template>\n\n<script>\nexport default {};\n</script>\n\n<style scoped>\nh5 {\n  color: red;\n}\n</style>\n"]}, media: undefined });
+    inject("data-v-5e356f1d_0", { source: "\nh5[data-v-5e356f1d] {\n  color: blue;\n}\n", map: { "version": 3, "sources": ["/Users/jamie/web/vuelvet/exampleapp/src/components/HelloWorld.js"], "names": [], "mappings": ";AAcA;EACA,WAAA;AACA", "file": "HelloWorld.vue", "sourcesContent": ["<template>\n  <h5>HELLLLLLLO WOOORRRLLLDDD</h5>\n</template>\n\n<script>\nimport _ from '/web_modules/lodash-es';\nexport default {\n  created () {\n    console.log(_);\n  }\n};\n</script>\n\n<style scoped>\nh5 {\n  color: blue;\n}\n</style>\n"] }, media: undefined });
 
-  };
-  /* scoped */
-  const __vue_scope_id__ = "data-v-2b289874";
-  /* module identifier */
-  const __vue_module_identifier__ = undefined;
-  /* functional template */
-  const __vue_is_functional_template__ = false;
-  /* style inject SSR */
-  
-  /* style inject shadow dom */
-  
+};
+/* scoped */
+const __vue_scope_id__ = "data-v-5e356f1d";
+/* module identifier */
+const __vue_module_identifier__ = undefined;
+/* functional template */
+const __vue_is_functional_template__ = false;
+/* style inject SSR */
 
-  
-  const __vue_component__ = normalizeComponent(
+/* style inject shadow dom */
+
+
+
+const __vue_component__ = normalizeComponent(
     { render: __vue_render__, staticRenderFns: __vue_staticRenderFns__ },
     __vue_inject_styles__,
     __vue_script__,
@@ -175,7 +177,6 @@ __vue_render__._withStripped = true;
     createInjector,
     undefined,
     undefined
-  );
+);
 
 export default __vue_component__;
-//# sourceMappingURL=HelloWorld.js.map

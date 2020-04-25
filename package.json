@@ -14,7 +14,9 @@
     "rimraf": "^3.0.2",
     "rollup": "^2.7.2",
     "rollup-plugin-vue": "^5.0.0",
-    "snowpack": "^1.7.1"
+    "snowpack": "^1.7.1",
+    "vite": "^0.5.1",
+    "vue-loader": "^15.9.1"
   },
   "devDependencies": {
     "@types/glob": "^7.1.1",
@@ -31,6 +33,6 @@
     "ts-node": "^8.9.0",
     "typescript": "^3.8.3",
     "vue": "^2.6.0",
-    "vue-template-compiler": "^2.6.0"
+    "vue-template-compiler": "^2.6.11"
   }
 }
