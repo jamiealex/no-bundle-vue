@@ -35,32 +35,32 @@ async function compileVueWithVueLoader(vueSrc: string): Promise<void> {
 
 async function compileVueFile(vueSrc: string): Promise<void> {
   const code = fs.readFileSync(vueSrc, 'utf-8');
-  const importStatements = [...getMatches(code, IMPORT_REGEXP, 2)]
-  // console.log([...importStatements])
-  // console.log(__dirname)
+  const importStatements = [...getMatches(code, IMPORT_REGEXP)]
   const rolledVueFile = await Rollup.rollup({
     input: vueSrc,
     plugins: [
-      // {
-      //   name: 'ResolveRoot',
-      //   resolveId(source, importer) {
-      //     console.log('oiu');
-
-      //     if (vueSrc !== source) {
-      //       return { id: source, external: true };
-      //     }
-      //     return null;
-      //   }
-      // },
       {
-        name: 'ReplaceVueWithJS',
-        renderChunk(code) {
-          return code.replace('.vue', '.js');
+        name: 'HoistImportsPlugin',
+        resolveId(source) {
+          if (source !== vueSrc) {
+            return {id: source, external: true};
+          }
+          return null;
+        },
+        transform(source, importer) {
+          let transformedSource:string = source
+          for (const importStatement of importStatements) {
+            transformedSource = transformedSource.replace(importStatement, '')
+          }
+          return transformedSource
+        },
+        intro () {
+          return importStatements.map(str => str.replace('.vue', '.js')).join('\n');
         }
       },
       vue(),
     ],
-    external: ['vue', ...importStatements]
+    external: ['vue']
   });
 
   const outputName = vueSrc

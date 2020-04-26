@@ -1,4 +1,4 @@
-import Vue from '../../../../../../web_modules/vue/dist/vue.esm.browser.js';
+import Vue from '/web_modules/vue/dist/vue.esm.browser.js';
 import App from './App.js';
 
 new Vue({
