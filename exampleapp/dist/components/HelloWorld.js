@@ -1,4 +1,4 @@
-import _ from '/web_modules/lodash-es';
+import _ from '/web_modules/lodash-es.js';
 
 import __vue_normalize__ from '/web_modules/vue-runtime-helpers/dist/normalize-component.js';
 import __vue_create_injector__ from '/web_modules/vue-runtime-helpers/dist/inject-style/browser.js';
