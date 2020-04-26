@@ -42,7 +42,7 @@ async function compileVueFile(vueSrc: string): Promise<void> {
       {
         name: 'HoistImportsPlugin',
         resolveId(source) {
-          if (source !== vueSrc) {
+          if (source !== vueSrc && !source.match(/\?rollup-plugin-vue=script.js$/)) {
             return {id: source, external: true};
           }
           return null;
@@ -59,6 +59,13 @@ async function compileVueFile(vueSrc: string): Promise<void> {
         }
       },
       vue(),
+      {
+        name: 'TransformImport',
+        renderChunk (code) {
+          const transformedCode = code.replace(/vue-runtime-helpers\/(.*)\.mjs/g, `/web_modules/vue-runtime-helpers/$1.js`)
+          return transformedCode
+        }
+      }
     ],
     external: ['vue']
   });

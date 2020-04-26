@@ -1,0 +1,8 @@
+{
+  "imports": {
+    "lodash-es": "./lodash-es.js",
+    "vue-runtime-helpers/dist/inject-style/browser.js": "./vue-runtime-helpers/dist/inject-style/browser.js",
+    "vue-runtime-helpers/dist/normalize-component.js": "./vue-runtime-helpers/dist/normalize-component.js",
+    "vue/dist/vue.esm.browser.js": "./vue/dist/vue.esm.browser.js"
+  }
+}
