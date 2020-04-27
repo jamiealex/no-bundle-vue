@@ -4,11 +4,13 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { get } from '/web_modules/lodash-es.js';
 
 export default {
-  created () {
+  created (): void {
+    const something: boolean = true;
+
     console.log(get);
   },
   props: {
@@ -25,9 +27,11 @@ export default {
 };
 </script>
 
-<style scoped>
-.username input {
-  padding: calc(var(--spacing) / 6);
-  border-radius: 0.3rem;
+<style scoped lang="postcss">
+.username {
+  & input {
+    padding: calc(var(--spacing) / 6);
+    border-radius: 0.3rem;
+  }
 }
 </style>

@@ -12,5 +12,8 @@
   "dependencies": {
     "lodash-es": "^4.17.15",
     "vue": "^2.6.11"
+  },
+  "devDependencies": {
+    "postcss-preset-env": "^6.7.0"
   }
 }

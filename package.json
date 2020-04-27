@@ -24,8 +24,10 @@
   "dependencies": {
     "commander": "^5.1.0",
     "glob": "^7.1.6",
+    "postcss-preset-env": "^6.7.0",
     "rimraf": "^3.0.2",
     "rollup": "^2.7.2",
+    "rollup-plugin-typescript": "^1.0.1",
     "rollup-plugin-vue": "^5.0.0",
     "snowpack": "^1.7.1"
   },

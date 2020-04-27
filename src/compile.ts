@@ -1,5 +1,7 @@
 import * as Rollup from 'rollup';
 import vue from 'rollup-plugin-vue';
+import typescript from 'rollup-plugin-typescript';
+import postcssPresetEnv from 'postcss-preset-env';
 
 export async function compileSourceFile(sourceFile: string, sourceDirectory: string, outputDirectory: string): Promise<void> {
   let importStatements: string[];
@@ -28,7 +30,30 @@ export async function compileSourceFile(sourceFile: string, sourceDirectory: str
           return importStatements.map(str => str.replace('.vue', '.js')).join('\n');
         }
       },
-      vue(),
+      typescript({
+        tsconfig: false,
+        experimentalDecorators: true,
+        module: 'es2015',
+      }),
+      vue({
+        beforeAssemble (descriptor) {
+          console.log(descriptor);
+          return descriptor;
+        },
+        style: {
+          postcssPlugins: [
+            postcssPresetEnv({
+              preserve: false,
+              features: {
+                'nesting-rules': true,
+                'custom-media-queries': true,
+                'color-functional-notation': true,
+                'color-mod-function': true,
+              },
+            }),
+          ]
+        }
+      }),
       {
         name: 'TransformImport',
         renderChunk (code) {
@@ -42,7 +67,7 @@ export async function compileSourceFile(sourceFile: string, sourceDirectory: str
 
   const outputName = sourceFile
     .replace(sourceDirectory, outputDirectory)
-    .replace(/(vue)$/, 'js');
+    .replace(/(.vue|.ts)$/, '.js');
 
   rolledVueFile.write({
     file: outputName,

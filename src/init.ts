@@ -14,5 +14,5 @@ export async function cleanDirectory (directory: string): Promise<void> {
 }
 
 export function getSourceFiles(directory: string): string[] {
-  return glob.sync(path.resolve(directory, './**/*.?(js|vue)'));
+  return glob.sync(path.resolve(directory, './**/*.?(ts|js|vue)'));
 }
