@@ -1,8 +1,18 @@
 import rimraf from 'rimraf';
 import util from 'util';
+import glob from 'glob';
+import path from 'path';
 
 const rimrafPromise = util.promisify(rimraf);
 
-export async function cleanDist(distFolder: string): Promise<void> {
-    return rimrafPromise(distFolder);
+export function getAbsolutePath (directory: string): string {
+  return path.resolve(__dirname, directory);
+}
+
+export async function cleanDirectory (directory: string): Promise<void> {
+    return rimrafPromise(directory);
+}
+
+export function getSourceFiles(directory: string): string[] {
+  return glob.sync(path.resolve(directory, './**/*.?(js|vue)'));
 }

@@ -2,7 +2,7 @@
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
-    "module": "CommonJS",
+    "module": "ES2015",
     "target": "ES2018",
     "sourceMap": true,
     "strict": true,
@@ -12,7 +12,8 @@
       "@/*": [
         "src/*"
       ]
-    }
+    },
+    "types": ["node"]
   },
   "include": [
     "src/**/*"

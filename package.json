@@ -1,37 +1,48 @@
 {
-  "name": "vuelvet",
-  "version": "1.0.0",
-  "main": "index.js",
-  "repository": "https://github.com/Spittal/vuelvet.git",
-  "author": "Jamie Spittal <lastmanout@gmail.com>",
+  "name": "no-bundle-vue",
+  "version": "0.0.1",
+  "author": "Jamie Spittal, Alexandre Bonaventure",
   "license": "MIT",
+  "source": "src/index.ts",
+  "bin": "bin/no-bundle-vue.js",
+  "main": "dist/no-bundle-vue.umd.js",
+  "module": "dist/no-bundle-vue.modern.js",
+  "types": "dist/index.d.ts",
+  "repository": "https://github.com/jamiealex/no-bundle-vue",
+  "homepage": "https://github.com/jamiealex/no-bundle-vue",
+  "bugs": "https://github.com/jamiealex/no-bundle-vue/issues",
+  "keywords": [
+    "vue",
+    "no bundle"
+  ],
   "scripts": {
-    "build": "ts-node ./src/index.ts",
-    "serve": "servor ./exampleapp/dist --watch"
+    "build": "rm -fr dist && microbundle -f modern,umd",
+    "example": "cd example && yarn && cd .. && yarn build && node ./bin/no-bundle-vue.js -s '../exampleapp/src' -o '../exampleapp/dist' && servor ./exampleapp/dist"
   },
   "dependencies": {
+    "commander": "^5.1.0",
     "glob": "^7.1.6",
     "rimraf": "^3.0.2",
     "rollup": "^2.7.2",
     "rollup-plugin-vue": "^5.0.0",
-    "snowpack": "^1.7.1",
-    "vite": "^0.5.1",
-    "vue-loader": "^15.9.1"
+    "snowpack": "^1.7.1"
   },
   "devDependencies": {
     "@types/glob": "^7.1.1",
-    "@types/jest": "^25.2.1",
+    "@types/node": "^13.13.4",
     "@types/rimraf": "^3.0.0",
     "@typescript-eslint/eslint-plugin": "^2.23.0",
     "@typescript-eslint/parser": "^2.23.0",
     "@vue/cli-plugin-eslint": "^4.0.0",
+    "@yarnpkg/pnpify": "^2.0.0-rc.21",
     "eslint": "^6.8.0",
-    "jest": "^25.1.0",
-    "jest-config": "^25.2.7",
+    "microbundle": "^0.12.0-next.8",
     "servor": "^3.2.0",
-    "ts-jest": "^25.2.1",
-    "ts-node": "^8.9.0",
     "typescript": "^3.8.3",
+    "vue": "^2.6.11",
+    "vue-template-compiler": "^2.6.11"
+  },
+  "peerDependencies": {
     "vue": "^2.6.0",
     "vue-template-compiler": "^2.6.11"
   }
