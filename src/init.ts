@@ -6,7 +6,7 @@ import path from 'path';
 const rimrafPromise = util.promisify(rimraf);
 
 export function getAbsolutePath (directory: string): string {
-  return path.resolve(__dirname, directory);
+  return path.resolve(process.cwd(), directory);
 }
 
 export async function cleanDirectory (directory: string): Promise<void> {
