@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import _ from '/web_modules/lodash-es';
+import _ from '/web_modules/lodash-es.js';
 export default {
   created () {
     console.log(_);

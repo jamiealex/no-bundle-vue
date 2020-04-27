@@ -1,12 +1,22 @@
-import _ from '/web_modules/lodash-es';
+import _ from '/web_modules/lodash-es.js';
 
-import script__default from 'HelloWorld.vue?rollup-plugin-vue=script.js';
-export * from 'HelloWorld.vue?rollup-plugin-vue=script.js';
-import __vue_normalize__ from 'vue-runtime-helpers/dist/normalize-component.mjs';
-import __vue_create_injector__ from 'vue-runtime-helpers/dist/inject-style/browser.mjs';
+import __vue_normalize__ from '/web_modules/vue-runtime-helpers/dist/normalize-component.js';
+import __vue_create_injector__ from '/web_modules/vue-runtime-helpers/dist/inject-style/browser.js';
+
+//
+//
+//
+//
+
+
+var script = {
+  created () {
+    console.log(_);
+  }
+};
 
 /* script */
-const __vue_script__ = script__default;
+const __vue_script__ = script;
 
 /* template */
 var __vue_render__ = function() {

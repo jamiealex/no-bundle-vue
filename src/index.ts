@@ -34,31 +34,40 @@ async function compileVueWithVueLoader(vueSrc: string): Promise<void> {
 }
 
 async function compileVueFile(vueSrc: string): Promise<void> {
-  const code = fs.readFileSync(vueSrc, 'utf-8');
-  const importStatements = [...getMatches(code, IMPORT_REGEXP)]
+  let importStatements
   const rolledVueFile = await Rollup.rollup({
     input: vueSrc,
     plugins: [
       {
         name: 'HoistImportsPlugin',
         resolveId(source) {
-          if (source !== vueSrc) {
+          if (source !== vueSrc && !source.match(/\?rollup-plugin-vue=script.js$/)) {
             return {id: source, external: true};
           }
           return null;
         },
         transform(source, importer) {
-          let transformedSource:string = source
-          for (const importStatement of importStatements) {
-            transformedSource = transformedSource.replace(importStatement, '')
+          if (!importer.match(/\?rollup-plugin-vue=script.js/)) {
+            let transformedSource:string = source
+            importStatements = [...getMatches(source, IMPORT_REGEXP)]
+            for (const importStatement of importStatements) {
+              transformedSource = transformedSource.replace(importStatement, '')
+            }
+            return transformedSource
           }
-          return transformedSource
         },
         intro () {
           return importStatements.map(str => str.replace('.vue', '.js')).join('\n');
         }
       },
       vue(),
+      {
+        name: 'TransformImport',
+        renderChunk (code) {
+          const transformedCode = code.replace(/vue-runtime-helpers\/(.*)\.mjs/g, `/web_modules/vue-runtime-helpers/$1.js`)
+          return transformedCode
+        }
+      }
     ],
     external: ['vue']
   });
