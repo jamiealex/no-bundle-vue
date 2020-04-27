@@ -893,7 +893,7 @@
   dependencies:
     slash "^3.0.0"
 
-"@rollup/plugin-commonjs@^11.0.1":
+"@rollup/plugin-commonjs@^11.0.0", "@rollup/plugin-commonjs@^11.0.1":
   version "11.1.0"
   resolved "https://registry.yarnpkg.com/@rollup/plugin-commonjs/-/plugin-commonjs-11.1.0.tgz#60636c7a722f54b41e419e1709df05c7234557ef"
   integrity sha512-Ycr12N3ZPN96Fw2STurD21jMqzKwL9QuFhms3SD7KKRK7oaXUsBU9Zt0jL/rOPHiPYisI21/rXGO3jr9BnLHUA==
@@ -902,17 +902,6 @@
     commondir "^1.0.1"
     estree-walker "^1.0.1"
     glob "^7.1.2"
-    is-reference "^1.1.2"
-    magic-string "^0.25.2"
-    resolve "^1.11.0"
-
-"@rollup/plugin-commonjs@~11.0.0":
-  version "11.0.2"
-  resolved "https://registry.yarnpkg.com/@rollup/plugin-commonjs/-/plugin-commonjs-11.0.2.tgz#837cc6950752327cb90177b608f0928a4e60b582"
-  integrity sha512-MPYGZr0qdbV5zZj8/2AuomVpnRVXRU5XKXb3HVniwRoRCreGlf5kOE081isNWeiLIi6IYkwTX9zE0/c7V8g81g==
-  dependencies:
-    "@rollup/pluginutils" "^3.0.0"
-    estree-walker "^1.0.1"
     is-reference "^1.1.2"
     magic-string "^0.25.2"
     resolve "^1.11.0"
@@ -943,7 +932,7 @@
     "@rollup/pluginutils" "^3.0.8"
     magic-string "^0.25.5"
 
-"@rollup/pluginutils@^3.0.0", "@rollup/pluginutils@^3.0.8":
+"@rollup/pluginutils@^3.0.8":
   version "3.0.9"
   resolved "https://registry.yarnpkg.com/@rollup/pluginutils/-/pluginutils-3.0.9.tgz#aa6adca2c45e5a1b950103a999e3cddfe49fd775"
   integrity sha512-TLZavlfPAZYI7v33wQh4mTP6zojne14yok3DNSLcjoG/Hirxfkonn6icP5rrNWRn8nZsirJBFFpijVOJzkUHDg==
@@ -2067,9 +2056,9 @@ cacheable-lookup@^2.0.0:
     keyv "^4.0.0"
 
 cacheable-lookup@^4.1.1:
-  version "4.1.2"
-  resolved "https://registry.yarnpkg.com/cacheable-lookup/-/cacheable-lookup-4.1.2.tgz#07c90b15910d4a5be6f3fa1a0ce73dfb9c192dc9"
-  integrity sha512-qwnOjdDFv4VNVjd5g+aKg7JuRS+q6bD8t9nk7l0tGTCPfLRX2jOmCTHFYc+leooxrtSKyOFzZz5MJQPUeYYkXA==
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/cacheable-lookup/-/cacheable-lookup-4.2.0.tgz#24a725d2a9cf6822c0cc6c0ea66d1fe16edd87ae"
+  integrity sha512-57vpIhK+mpViWMgY65nly7pgofA9x8yebdVc+y4Vwu8S8Wunx/iru5ieIlD4QyaIAXBJIqI+ONsSU8guxr02iQ==
 
 cacheable-request@^7.0.1:
   version "7.0.1"
@@ -4458,7 +4447,7 @@ is-plain-object@^2.0.3, is-plain-object@^2.0.4:
   dependencies:
     isobject "^3.0.1"
 
-is-promise@^2.0.0, is-promise@^2.1.0:
+is-promise@^2.0.0:
   version "2.2.2"
   resolved "https://registry.yarnpkg.com/is-promise/-/is-promise-2.2.2.tgz#39ab959ccbf9a774cf079f7b40c7a26f763135f1"
   integrity sha512-+lP4/6lKUBfQjZ2pdxThZvLUAafmZb8OAxFb8XXtiQmS35INgr85hdOGoEs124ez1FCnZJt6jau/T+alh58QFQ==
@@ -6978,11 +6967,9 @@ rollup@^2.3.0, rollup@^2.7.2:
     fsevents "~2.1.2"
 
 run-async@^2.4.0:
-  version "2.4.0"
-  resolved "https://registry.yarnpkg.com/run-async/-/run-async-2.4.0.tgz#e59054a5b86876cfae07f431d18cbaddc594f1e8"
-  integrity sha512-xJTbh/d7Lm7SBhc1tNvTpeCHaEzoyxPrqNlvSdMfBTYwaY++UJFyXUOxAtsRUXjlqOfj8luNaR9vjCh4KeV+pg==
-  dependencies:
-    is-promise "^2.1.0"
+  version "2.4.1"
+  resolved "https://registry.yarnpkg.com/run-async/-/run-async-2.4.1.tgz#8440eccf99ea3e70bd409d49aab88e10c189a455"
+  integrity sha512-tvVnVv01b8c1RrA6Ep7JkStj85Guv/YrMcwqYQnwjsAS2cTmmPGBBjAjpCW7RrSodNSoE2/qg9O4bceNvUuDgQ==
 
 run-parallel@^1.1.9:
   version "1.1.9"
@@ -7194,16 +7181,16 @@ snapdragon@^0.8.1:
     source-map-resolve "^0.5.0"
     use "^3.1.0"
 
-snowpack@^1.7.1:
-  version "1.7.1"
-  resolved "https://registry.yarnpkg.com/snowpack/-/snowpack-1.7.1.tgz#fe2af55783efbcf7033efc7c60ab2e7ec8faebe9"
-  integrity sha512-W21f2olHpd73ozcdsoSudoXH9434LhI3q5wOSi5vpS6uz6PLJYyr7a98FjoUtmY2SHXancu9MXvV+2TemSkujA==
+snowpack@1.7.0:
+  version "1.7.0"
+  resolved "https://registry.yarnpkg.com/snowpack/-/snowpack-1.7.0.tgz#1276f8402c3dd8a0502ca7e6f87930a33b5f1841"
+  integrity sha512-2k3aR2ceMw6xwktHOJysoc+AD1lPyoHP9gWE3WGx64xB+idSVS9CNA1+rvhaRN620FPcKYDONU+M08RVta4TiQ==
   dependencies:
     "@babel/core" "^7.6.4"
     "@babel/plugin-transform-react-jsx" "^7.9.4"
     "@babel/preset-env" "^7.6.3"
     "@babel/types" "^7.6.3"
-    "@rollup/plugin-commonjs" "~11.0.0"
+    "@rollup/plugin-commonjs" "^11.0.0"
     "@rollup/plugin-json" "^4.0.0"
     "@rollup/plugin-node-resolve" "^7.1.0"
     "@rollup/plugin-replace" "^2.1.0"

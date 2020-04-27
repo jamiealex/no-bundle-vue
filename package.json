@@ -17,7 +17,7 @@
   ],
   "scripts": {
     "build": "rm -fr dist && microbundle -f modern,umd",
-    "example": "cd example && yarn && cd .. && yarn build && node ./bin/no-bundle-vue.js -s '../exampleapp/src' -o '../exampleapp/dist' && servor ./exampleapp/dist"
+    "example": "cd example && yarn && cd .. && yarn build && node ./bin/no-bundle-vue.js -s './example/src' -o './example/dist' && servor ./example/dist"
   },
   "dependencies": {
     "commander": "^5.1.0",

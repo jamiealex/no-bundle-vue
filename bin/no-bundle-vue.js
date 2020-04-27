@@ -1,4 +1,6 @@
-/* eslint-disable */
+#!/usr/bin/env node
+// vim: set filetype=javascript:
+ /* eslint-disable */
 'use strict';
 const program = require('commander');
 const NoBundleVue = require('../dist/no-bundle-vue.umd');
@@ -15,4 +17,5 @@ program
      'A directory where your compiled source files will be placed.'
    )
   .action(NoBundleVue);
-program.parse(process.argv);
+
+program.parseAsync(process.argv);
