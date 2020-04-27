@@ -9,13 +9,13 @@ export async function compileSourceFile(sourceFile: string, sourceDirectory: str
       {
         name: 'HoistImportsPlugin',
         resolveId(source) {
-          if (source !== sourceFile && !source.match(/\?rollup-plugin-vue=script.js$/)) {
+          if (source !== sourceFile && !source.match(/\?rollup-plugin-vue=script.?(js|ts)$/)) {
             return {id: source, external: true};
           }
           return null;
         },
         transform(source, importer) {
-          if (!importer.match(/\?rollup-plugin-vue=script.js/)) {
+          if (!importer.match(/\?rollup-plugin-vue=script.?(js|ts)/)) {
             let transformedSource:string = source
             importStatements = [...getImportStatements(source)]
             for (const importStatement of importStatements) {

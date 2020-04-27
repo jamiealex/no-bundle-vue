@@ -5,7 +5,12 @@
 </template>
 
 <script>
+import { get } from '/web_modules/lodash-es.js';
+
 export default {
+  created () {
+    console.log(get);
+  },
   props: {
     username: {
       type: String,

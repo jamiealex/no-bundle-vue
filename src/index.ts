@@ -25,3 +25,11 @@ export default async function noBundleVue({
   await snowpack(absoluteSourceDirectory, absoluteOutputDirectory);
   await moveIndex(absoluteSourceDirectory, absoluteOutputDirectory);
 }
+
+// For dev:build script to work.
+if (process.env.npm_lifecycle_script?.includes('ts-node')) {
+  noBundleVue({
+    sourceDirectory: './example/src',
+    outputDirectory: './example/dist',
+  });
+}

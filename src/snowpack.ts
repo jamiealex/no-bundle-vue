@@ -16,6 +16,7 @@ export async function snowpack(sourceDirectory: string, outputDirectory: string)
         path.resolve(outputDirectory, './**/*.js'),
         '--dest',
         path.resolve(outputDirectory, './web_modules'),
+        '--optimize'
       ],
       {
         // Super opinionated. Need to find the nearest node_modules folder for this
