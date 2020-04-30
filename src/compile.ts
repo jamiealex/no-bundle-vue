@@ -3,6 +3,8 @@ import vue from 'rollup-plugin-vue';
 import typescript from 'rollup-plugin-typescript';
 import postcssPresetEnv from 'postcss-preset-env';
 
+const ABS_PATH_PLACEHOLDER = './__*$placeholder$*__';
+
 export async function compileSourceFile(sourceFile: string, sourceDirectory: string, outputDirectory: string): Promise<void> {
   let importStatements: string[];
   const rolledVueFile = await Rollup.rollup({
@@ -11,24 +13,12 @@ export async function compileSourceFile(sourceFile: string, sourceDirectory: str
       {
         name: 'HoistImportsPlugin',
         resolveId(source) {
-          if (source !== sourceFile && !source.match(/\?rollup-plugin-vue=script.?(js|ts)$/)) {
-            return {id: source, external: true};
+          if (source !== sourceFile && !source.match(/\?rollup-plugin-vue=script\..*$/)) {
+            const transformedSource: string = source.startsWith('/') ? `${ABS_PATH_PLACEHOLDER}${source}` : source
+            return { id: transformedSource, external: true };
           }
           return null;
         },
-        transform(source, importer) {
-          if (!importer.match(/\?rollup-plugin-vue=script.?(js|ts)/)) {
-            let transformedSource:string = source
-            importStatements = [...getImportStatements(source)]
-            for (const importStatement of importStatements) {
-              transformedSource = transformedSource.replace(importStatement, '')
-            }
-            return transformedSource
-          }
-        },
-        intro () {
-          return importStatements.map(str => str.replace('.vue', '.js')).join('\n');
-        }
       },
       typescript({
         tsconfig: false,
@@ -36,10 +26,6 @@ export async function compileSourceFile(sourceFile: string, sourceDirectory: str
         module: 'es2015',
       }),
       vue({
-        beforeAssemble (descriptor) {
-          console.log(descriptor);
-          return descriptor;
-        },
         style: {
           postcssPlugins: [
             postcssPresetEnv({
@@ -56,8 +42,10 @@ export async function compileSourceFile(sourceFile: string, sourceDirectory: str
       }),
       {
         name: 'TransformImport',
-        renderChunk (code) {
-          const transformedCode = code.replace(/vue-runtime-helpers\/(.*)\.mjs/g, `/web_modules/vue-runtime-helpers/$1.js`)
+        renderChunk(code) {
+          let transformedCode = code.replace(/vue-runtime-helpers\/(.*)\.mjs/g, `/web_modules/vue-runtime-helpers/$1.js`)
+          transformedCode = transformedCode.replace(new RegExp(escapeStringForRegexp(ABS_PATH_PLACEHOLDER), 'g'), '')
+          transformedCode = transformedCode.replace(/.vue(['"`])/g, '.js$1') // TODO better regexp to prevent leaks
           return transformedCode
         }
       }
@@ -76,14 +64,6 @@ export async function compileSourceFile(sourceFile: string, sourceDirectory: str
   });
 }
 
-const IMPORT_REGEXP = /^\s*import\s(?!type(of\s|\s)(?!from)).*\sfrom\s['"](.*)['"].*$/gm;
-
-function* getImportStatements(code: string): IterableIterator<string> {
-  while (true) {
-    const match = IMPORT_REGEXP.exec(code);
-    if (match === null) {
-      break;
-    }
-    yield match[0];
-  };
+function escapeStringForRegexp(string): string {
+  return string.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&')
 }

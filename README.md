@@ -4,7 +4,7 @@ An experimental tool that takes your Vue project, compiles your .vue files to in
 
 - [ ] Documentation
 - [ ] Add Babel for nicer imports
-- [ ] Dynamic Imports
+- [x] Dynamic Imports
 - [x] Typescript Support
 - [ ] Pug Support
 - [ ] PostCSS Support
