@@ -2,10 +2,11 @@ import * as Rollup from 'rollup';
 import vue from 'rollup-plugin-vue';
 import typescript from 'rollup-plugin-typescript';
 import postcssPresetEnv from 'postcss-preset-env';
+import { NoBundleVueOptions } from './types';
 
 const ABS_PATH_PLACEHOLDER = './__*$placeholder$*__';
 
-export async function compileSourceFile(sourceFile: string, sourceDirectory: string, outputDirectory: string): Promise<void> {
+export async function compileSourceFile(sourceFile: string, sourceDirectory: string, outputDirectory: string, config: NoBundleVueOptions['config']): Promise<void> {
   let importStatements: string[];
   const rolledVueFile = await Rollup.rollup({
     input: sourceFile,
@@ -20,26 +21,8 @@ export async function compileSourceFile(sourceFile: string, sourceDirectory: str
           return null;
         },
       },
-      typescript({
-        tsconfig: false,
-        experimentalDecorators: true,
-        module: 'es2015',
-      }),
-      vue({
-        style: {
-          postcssPlugins: [
-            postcssPresetEnv({
-              preserve: false,
-              features: {
-                'nesting-rules': true,
-                'custom-media-queries': true,
-                'color-functional-notation': true,
-                'color-mod-function': true,
-              },
-            }),
-          ]
-        }
-      }),
+      ...config.rollupPlugins,
+      vue(config.vueRollupOptions),
       {
         name: 'TransformImport',
         renderChunk(code) {

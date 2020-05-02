@@ -29,12 +29,3 @@ export default {
   },
 };
 </script>
-
-<style scoped lang="postcss">
-.username {
-  & input {
-    padding: calc(var(--spacing) / 6);
-    border-radius: 0.3rem;
-  }
-}
-</style>

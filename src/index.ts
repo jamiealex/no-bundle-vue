@@ -3,15 +3,16 @@ import { getAbsolutePath, cleanDirectory, getSourceFiles } from './init';
 import { compileSourceFile } from './compile';
 import { snowpack } from './snowpack';
 import { moveIndex } from './end';
+import { NoBundleVueOptions } from './types';
 
-type NoBundleVueOptions = {
-  sourceDirectory: string;
-  outputDirectory: string;
-};
-
+const defaultConfig: NoBundleVueOptions['config'] = {
+  vueRollupOptions: undefined,
+  rollupPlugins: []
+}
 export default async function noBundleVue({
   sourceDirectory,
   outputDirectory,
+  config = defaultConfig
 }: NoBundleVueOptions): Promise<void> {
   const absoluteSourceDirectory = getAbsolutePath(sourceDirectory);
   const absoluteOutputDirectory = getAbsolutePath(outputDirectory);
@@ -19,17 +20,9 @@ export default async function noBundleVue({
   await cleanDirectory(absoluteOutputDirectory);
 
   for (const sourceFile of getSourceFiles(absoluteSourceDirectory)) {
-    await compileSourceFile(sourceFile, absoluteSourceDirectory, absoluteOutputDirectory);
+    await compileSourceFile(sourceFile, absoluteSourceDirectory, absoluteOutputDirectory, config);
   }
 
   await snowpack(absoluteSourceDirectory, absoluteOutputDirectory);
   await moveIndex(absoluteSourceDirectory, absoluteOutputDirectory);
-}
-
-// For dev:build script to work.
-if (process.env.npm_lifecycle_script?.includes('ts-node')) {
-  noBundleVue({
-    sourceDirectory: './example/src',
-    outputDirectory: './example/dist',
-  });
 }
