@@ -1,7 +1,5 @@
 import * as Rollup from 'rollup';
 import vue from 'rollup-plugin-vue';
-import typescript from 'rollup-plugin-typescript';
-import postcssPresetEnv from 'postcss-preset-env';
 import { NoBundleVueOptions } from './types';
 
 const ABS_PATH_PLACEHOLDER = './__*$placeholder$*__';
@@ -40,7 +38,7 @@ export async function compileSourceFile(sourceFile: string, sourceDirectory: str
     .replace(sourceDirectory, outputDirectory)
     .replace(/(.vue|.ts)$/, '.js');
 
-  rolledVueFile.write({
+  await rolledVueFile.write({
     file: outputName,
     format: 'esm',
     // sourcemap: true,

@@ -5,12 +5,12 @@ import path from 'path';
 
 const rimrafPromise = util.promisify(rimraf);
 
-export function getAbsolutePath (directory: string): string {
-  return path.resolve(process.cwd(), directory);
+export function getAbsolutePath(directory: string): string {
+  return path.resolve(__dirname, directory);
 }
 
-export async function cleanDirectory (directory: string): Promise<void> {
-    return rimrafPromise(directory);
+export async function cleanDirectory(directory: string): Promise<void> {
+  return rimrafPromise(directory);
 }
 
 export function getSourceFiles(directory: string): string[] {

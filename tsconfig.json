@@ -14,10 +14,13 @@
         "src/*"
       ]
     },
-    "types": ["node"]
+    "types": [
+      "node"
+    ]
   },
   "include": [
-    "src/**/*"
+    "src/**/*",
+    "tests/**/*"
   ],
   "exclude": [
     "**/*.spec.ts"

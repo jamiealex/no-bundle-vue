@@ -17,16 +17,15 @@
   ],
   "scripts": {
     "build": "rm -fr dist && microbundle -f modern,umd",
+    "test": "yarn build && jest",
     "example:build": "yarn build && node ./bin/no-bundle-vue.js -s './examples/simple/src' -o './examples/simple/dist'",
     "example:serve": "cd examples/simple && yarn && cd ../.. && yarn example:build && servor ./examples/simple/dist"
   },
   "dependencies": {
     "commander": "^5.1.0",
     "glob": "^7.1.6",
-    "postcss-preset-env": "^6.7.0",
     "rimraf": "^3.0.2",
     "rollup": "^2.7.2",
-    "rollup-plugin-typescript": "^1.0.1",
     "rollup-plugin-vue": "^5.0.0",
     "snowpack": "^1.7.1"
   },
@@ -39,6 +38,7 @@
     "@vue/cli-plugin-eslint": "^4.0.0",
     "@yarnpkg/pnpify": "^2.0.0-rc.21",
     "eslint": "^6.8.0",
+    "jest": "^26.0.0",
     "microbundle": "^0.12.0-next.8",
     "servor": "^3.2.0",
     "ts-node": "^8.9.1",

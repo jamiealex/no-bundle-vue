@@ -16,3 +16,10 @@ An experimental tool that takes your Vue project, compiles your .vue files to in
 - [ ] Test/log benchmarking with a real-world application
 - [ ] Investigate rollup watch API as a way to setup a dev server
 - [ ] Add unit testing
+
+## Development 
+
+Run the development example with:
+```sh
+yarn example:serve
+```

@@ -3,6 +3,7 @@
  /* eslint-disable */
 'use strict';
 const program = require('commander');
+const path = require('path');
 const NoBundleVue = require('../dist/no-bundle-vue.umd');
 program
   .version(process.env.npm_package_version || '0.0.0')
@@ -16,6 +17,6 @@ program
      '-o --outputDirectory <outputDirectory>',
      'A directory where your compiled source files will be placed.'
    )
-  .action(NoBundleVue);
+  .action((args) => NoBundleVue({ ...args, sourceDirectory: path.resolve(process.cwd(), args.sourceDirectory), outputDirectory: path.resolve(process.cwd(), args.outputDirectory) }));
 
 program.parseAsync(process.argv);

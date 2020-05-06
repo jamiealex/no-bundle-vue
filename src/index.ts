@@ -13,16 +13,15 @@ export default async function noBundleVue({
   sourceDirectory,
   outputDirectory,
   config = defaultConfig
-}: NoBundleVueOptions): Promise<void> {
-  const absoluteSourceDirectory = getAbsolutePath(sourceDirectory);
-  const absoluteOutputDirectory = getAbsolutePath(outputDirectory);
+}): Promise<void> {
 
-  await cleanDirectory(absoluteOutputDirectory);
+  await cleanDirectory(outputDirectory);
 
-  for (const sourceFile of getSourceFiles(absoluteSourceDirectory)) {
-    await compileSourceFile(sourceFile, absoluteSourceDirectory, absoluteOutputDirectory, config);
+  for (const sourceFile of getSourceFiles(sourceDirectory)) {
+    console.log(sourceFile);
+    await compileSourceFile(sourceFile, sourceDirectory, outputDirectory, config);
   }
 
-  await snowpack(absoluteSourceDirectory, absoluteOutputDirectory);
-  await moveIndex(absoluteSourceDirectory, absoluteOutputDirectory);
+  await snowpack(sourceDirectory, outputDirectory);
+  await moveIndex(sourceDirectory, outputDirectory);
 }

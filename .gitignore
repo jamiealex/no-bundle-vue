@@ -6,3 +6,4 @@ node_modules
 !.yarn/plugins
 *.log
 dist
+tests/fixture-dist

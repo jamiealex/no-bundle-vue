@@ -1,0 +1,80 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`it should work 1`] = `
+"import '/web_modules/lodash-es.js';
+import __vue_normalize__ from '/web_modules/vue-runtime-helpers/dist/normalize-component.js';
+import __vue_create_injector__ from '/web_modules/vue-runtime-helpers/dist/inject-style/browser.js';
+
+var script = {
+  created() {
+    (async function() {
+      await import('/web_modules/lodash-es.js');
+      await import('../something.js');
+    })();
+  },
+  props: {
+    username: {
+      type: String,
+      required: true,
+    },
+  },
+  methods: {
+    onUsernameInput(event) {
+      this.$emit('update:username', event.target.value);
+    },
+  },
+};
+
+/* script */
+const __vue_script__ = script;
+
+/* template */
+var __vue_render__ = function() {
+  var _vm = this;
+  var _h = _vm.$createElement;
+  var _c = _vm._self._c || _h;
+  return _c(\\"div\\", { staticClass: \\"username\\" }, [
+    _c(\\"input\\", {
+      attrs: { type: \\"text\\" },
+      domProps: { value: _vm.username },
+      on: { input: _vm.onUsernameInput }
+    })
+  ])
+};
+var __vue_staticRenderFns__ = [];
+__vue_render__._withStripped = true;
+
+  /* style */
+  const __vue_inject_styles__ = function (inject) {
+    if (!inject) return
+    inject(\\"data-v-3595f193_0\\", { source: \\"\\\\n.username[data-v-3595f193] {\\\\n& input {\\\\r\\\\n    padding: calc(var(--spacing) / 6);\\\\r\\\\n    border-radius: 0.3rem;\\\\n}\\\\n}\\\\r\\\\n\\", map: {\\"version\\":3,\\"sources\\":[\\"/home/alex/Sites/no-bundle-vue/tests/fixture/FixtureComponent.js\\"],\\"names\\":[],\\"mappings\\":\\";AA+BA;AACA;IACA,iCAAA;IACA,qBAAA;AACA;AACA\\",\\"file\\":\\"FixtureComponent.js\\",\\"sourcesContent\\":[\\"<template>\\\\r\\\\n  <div class=\\\\\\"username\\\\\\">\\\\r\\\\n    <input type=\\\\\\"text\\\\\\" :value=\\\\\\"username\\\\\\" @input=\\\\\\"onUsernameInput\\\\\\" />\\\\r\\\\n  </div>\\\\r\\\\n</template>\\\\r\\\\n\\\\r\\\\n<script lang=\\\\\\"ts\\\\\\">\\\\r\\\\nimport { get } from '/web_modules/lodash-es.js';\\\\r\\\\n\\\\r\\\\nexport default {\\\\r\\\\n  created() {\\\\r\\\\n    (async function() {\\\\r\\\\n      await import('/web_modules/lodash-es.js');\\\\r\\\\n      await import('../something.js');\\\\r\\\\n    })();\\\\r\\\\n  },\\\\r\\\\n  props: {\\\\r\\\\n    username: {\\\\r\\\\n      type: String,\\\\r\\\\n      required: true,\\\\r\\\\n    },\\\\r\\\\n  },\\\\r\\\\n  methods: {\\\\r\\\\n    onUsernameInput(event) {\\\\r\\\\n      this.$emit('update:username', event.target.value);\\\\r\\\\n    },\\\\r\\\\n  },\\\\r\\\\n};\\\\r\\\\n</script>\\\\r\\\\n\\\\r\\\\n<style scoped lang=\\\\\\"postcss\\\\\\">\\\\r\\\\n.username {\\\\r\\\\n  & input {\\\\r\\\\n    padding: calc(var(--spacing) / 6);\\\\r\\\\n    border-radius: 0.3rem;\\\\r\\\\n  }\\\\r\\\\n}\\\\r\\\\n</style>\\\\r\\\\n\\"]}, media: undefined });
+
+  };
+  /* scoped */
+  const __vue_scope_id__ = \\"data-v-3595f193\\";
+  /* module identifier */
+  const __vue_module_identifier__ = undefined;
+  /* functional template */
+  const __vue_is_functional_template__ = false;
+  /* style inject SSR */
+  
+  /* style inject shadow dom */
+  
+
+  
+  const __vue_component__ = __vue_normalize__(
+    { render: __vue_render__, staticRenderFns: __vue_staticRenderFns__ },
+    __vue_inject_styles__,
+    __vue_script__,
+    __vue_scope_id__,
+    __vue_is_functional_template__,
+    __vue_module_identifier__,
+    false,
+    __vue_create_injector__,
+    undefined,
+    undefined
+  );
+
+export default __vue_component__;
+"
+`;
